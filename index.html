@@ -65,7 +65,7 @@ footer p{margin:7px}
 <div class="card"><div class="emoji">🎓</div><h3>INI-CET</h3><p>Clinical concepts, image-based questions and exam-oriented practice.</p></div>
 <div class="card"><div class="emoji">🌍</div><h3>FMGE</h3><p>Important concepts, rapid revision and practice questions.</p></div>
 <div class="card"><div class="emoji">📚</div><h3>UPSC CMS</h3><p>Focused preparation and useful medical exam resources.</p></div>
-<div class="card"><div class="emoji">🏥</div><h3>Medical Officer</h3><p>State MO exam preparation, Rajasthan MO updates and PYQs.</p></div>
+<div class="card"><div class="emoji">🏥</div><h3>Medical Officer</h3><p>State MO exam preparation, Rajasthan MO updates and PYQs.</p><a class="btn" href="#ruhs-mo-flashcards">RUHS MO Flashcards →</a></div>
 </div>
 </section>
 
@@ -129,6 +129,54 @@ footer p{margin:7px}
 </div>
 </div>
 </section>
+
+<section class="study-extra" id="ruhs-mo-flashcards">
+<div class="study-inner">
+<h2>Rajasthan MO • 20 Expected Flashcards</h2>
+<p class="intro">High-yield rapid revision for RUHS Medical Officer preparation. Tap reveal, then move to the next card.</p>
+<div class="study-box">
+<p id="ruhs-mo-fc-count"><strong>RUHS MO • Card 1 of 20</strong></p>
+<h3 id="ruhs-mo-fc-question">What is the most common cause of community-acquired pneumonia?</h3>
+<div id="ruhs-mo-fc-answer" class="study-answer" hidden></div>
+<button class="alt" id="ruhs-mo-fc-reveal" type="button">Reveal Answer</button>
+<button id="ruhs-mo-fc-next" type="button">Next Flashcard →</button>
+<p class="study-small">Exam-oriented expected revision facts; these are not claimed to be official or verbatim RUHS questions. Verify with standard textbooks and current guidelines.</p>
+</div>
+</div>
+</section>
+<script>
+(function(){
+const deck=[
+["Most common cause of community-acquired pneumonia?","Streptococcus pneumoniae."],
+["Drug of choice for anaphylaxis?","IM adrenaline (epinephrine), in the anterolateral thigh."],
+["First-line drug for status epilepticus?","IV lorazepam; give a benzodiazepine promptly."],
+[" antidote for paracetamol poisoning?","N-acetylcysteine (NAC)."],
+["Most common cause of iron-deficiency anaemia?","Chronic blood loss; in adults, investigate the source."],
+["Which vaccine is given at birth under India's UIP?","BCG, OPV-0 and hepatitis B birth dose."],
+["Vitamin A deficiency causes which eye finding?","Night blindness; Bitot spots are a characteristic sign."],
+["Most common cause of postpartum haemorrhage?","Uterine atony."],
+["First step in management of eclampsia?","Stabilize airway, breathing and circulation; control seizures with magnesium sulfate."],
+["Drug used to prevent recurrent eclamptic seizures?","Magnesium sulfate."],
+["Most common organism causing urinary tract infection?","Escherichia coli."],
+["Most specific cardiac biomarker for myocardial injury?","Cardiac troponin (I or T)."],
+["Definitive treatment for uncomplicated falciparum malaria?","Artemisinin-based combination therapy (ACT), according to local/current policy."],
+["What is the first-line treatment for uncomplicated scabies?","Permethrin 5% cream; treat close contacts and decontaminate clothing/bedding."],
+["Most common cause of hypothyroidism in iodine-sufficient areas?","Hashimoto thyroiditis."],
+["What is the antidote for organophosphorus poisoning?","Atropine plus pralidoxime, with airway and supportive care."],
+["Which electrolyte abnormality is classically associated with ECG peaked T waves?","Hyperkalaemia."],
+["What is the recommended first-line ORS principle in acute diarrhoea?","Low-osmolarity ORS; continue feeding and assess dehydration."],
+["Which indicator measures deaths of infants under one year per 1,000 live births?","Infant Mortality Rate (IMR)."],
+["What is the usual incubation period of measles?","About 10–14 days to rash (roughly 14 days after exposure)."]
+];
+let i=0,visible=false;
+const q=document.getElementById("ruhs-mo-fc-question"),a=document.getElementById("ruhs-mo-fc-answer"),count=document.getElementById("ruhs-mo-fc-count"),reveal=document.getElementById("ruhs-mo-fc-reveal");
+function draw(){count.innerHTML="<strong>RUHS MO • Card "+(i+1)+" of "+deck.length+"</strong>";q.textContent=deck[i][0];a.textContent=deck[i][1];a.hidden=true;visible=false;reveal.textContent="Reveal Answer";}
+reveal.addEventListener("click",()=>{visible=!visible;a.hidden=!visible;reveal.textContent=visible?"Hide Answer":"Reveal Answer";});
+document.getElementById("ruhs-mo-fc-next").addEventListener("click",()=>{i=(i+1)%deck.length;draw();});
+draw();
+})();
+</script>
+
 <section class="study-extra" id="pyq-practice">
 <div class="study-inner">
 <h2>PYQ-Style Practice</h2>
