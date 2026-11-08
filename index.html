@@ -99,5 +99,74 @@ footer p{margin:7px}
 <p><a href="https://whatsapp.com/channel/0029VbDseYTBqbrEgOOd7E0r">WhatsApp Channel</a> · <a href="mailto:medorbitindian@gmail.com">Contact Us</a></p>
 <p style="font-size:12px;margin-top:18px">© 2026 MedOrbit India. All rights reserved.</p>
 </footer>
+
+<style>
+.study-extra{padding:58px 7%;background:#eaf1f7;color:#17243b}
+.study-extra .study-inner{max-width:760px;margin:auto}
+.study-extra h2{text-align:center;font-size:30px;margin-bottom:8px;color:#142c48}
+.study-extra .intro{text-align:center;color:#64748b;margin-bottom:25px}
+.study-box{background:#fff;border:1px solid #e1e8ef;border-radius:15px;padding:22px;margin:16px 0;box-shadow:0 5px 20px #142c480b}
+.study-box h3{color:#183b5b;margin-bottom:10px}
+.study-box button{padding:11px 16px;border:0;border-radius:8px;background:#183b5b;color:white;font-weight:bold;cursor:pointer;margin:8px 8px 0 0}
+.study-box button.alt{background:#55cdbb;color:#10213b}
+.study-answer{background:#edf8f6;border-left:4px solid #25a99b;padding:13px;margin-top:13px;border-radius:7px}
+.study-option{display:block;width:100%;text-align:left;background:#f5f8fb!important;color:#17243b!important;border:1px solid #dce5ee!important;margin:8px 0!important}
+.study-option.correct{background:#e8f7ef!important;border-color:#38a169!important}
+.study-option.wrong{background:#fff0ed!important;border-color:#d66b58!important}
+.study-small{font-size:12px;color:#718096;margin-top:12px}
+</style>
+<section class="study-extra" id="flashcards">
+<div class="study-inner">
+<h2>Quick Revision Flashcards</h2>
+<p class="intro">Test your recall. Reveal the answer when you are ready.</p>
+<div class="study-box">
+<p id="mo-fc-count"><strong>Pharmacology • Card 1 of 2</strong></p>
+<h3 id="mo-fc-question">What is the antidote for paracetamol poisoning?</h3>
+<div id="mo-fc-answer" class="study-answer" hidden><strong>N-acetylcysteine (NAC).</strong><br>It replenishes glutathione and helps detoxify the toxic metabolite NAPQI.</div>
+<button class="alt" id="mo-fc-reveal" type="button">Reveal Answer</button>
+<button id="mo-fc-next" type="button">Next Flashcard →</button>
+<p class="study-small">Starter revision cards; cross-check clinical details with standard references.</p>
+</div>
+</div>
+</section>
+<section class="study-extra" id="pyq-practice">
+<div class="study-inner">
+<h2>PYQ-Style Practice</h2>
+<p class="intro">Attempt this single-best-answer question and read the explanation.</p>
+<div class="study-box">
+<p><strong>Medicine • Single Best Answer</strong></p>
+<h3>Which organism is the most common cause of community-acquired pneumonia in adults?</h3>
+<div id="mo-mcq-options">
+<button class="study-option" type="button" data-correct="false">Haemophilus influenzae</button>
+<button class="study-option" type="button" data-correct="true">Streptococcus pneumoniae</button>
+<button class="study-option" type="button" data-correct="false">Pseudomonas aeruginosa</button>
+<button class="study-option" type="button" data-correct="false">Klebsiella pneumoniae</button>
+</div>
+<p id="mo-mcq-feedback" aria-live="polite"></p>
+<div id="mo-mcq-explanation" class="study-answer" hidden><strong>Correct answer: Streptococcus pneumoniae.</strong><br>It is the classic and most common bacterial cause of community-acquired pneumonia in adults.</div>
+<p class="study-small">Illustrative PYQ-style starter question, not a verbatim previous-year question.</p>
+</div>
+</div>
+</section>
+<script>
+(function(){
+const cards=[
+{label:"Pharmacology • Card 1 of 2",q:"What is the antidote for paracetamol poisoning?",a:"<strong>N-acetylcysteine (NAC).</strong><br>It replenishes glutathione and helps detoxify the toxic metabolite NAPQI."},
+{label:"Pharmacology • Card 2 of 2",q:"Aspirin produces its antiplatelet effect by irreversibly inhibiting which enzyme in platelets?",a:"<strong>COX-1.</strong><br>Low-dose aspirin irreversibly inhibits platelet COX-1, reducing thromboxane A₂ synthesis."}
+];
+let index=0,shown=false;
+const q=document.getElementById("mo-fc-question"),a=document.getElementById("mo-fc-answer"),label=document.getElementById("mo-fc-count"),reveal=document.getElementById("mo-fc-reveal");
+function render(){q.textContent=cards[index].q;a.innerHTML=cards[index].a;label.innerHTML="<strong>"+cards[index].label+"</strong>";a.hidden=true;shown=false;reveal.textContent="Reveal Answer";}
+reveal.addEventListener("click",()=>{shown=!shown;a.hidden=!shown;reveal.textContent=shown?"Hide Answer":"Reveal Answer";});
+document.getElementById("mo-fc-next").addEventListener("click",()=>{index=(index+1)%cards.length;render();});
+document.querySelectorAll("#mo-mcq-options button").forEach(btn=>btn.addEventListener("click",()=>{
+document.querySelectorAll("#mo-mcq-options button").forEach(b=>{b.disabled=true;if(b.dataset.correct==="true")b.classList.add("correct");});
+const ok=btn.dataset.correct==="true";if(!ok)btn.classList.add("wrong");
+document.getElementById("mo-mcq-feedback").textContent=ok?"Correct! Well done.":"Not quite. The correct answer is Streptococcus pneumoniae.";
+document.getElementById("mo-mcq-explanation").hidden=false;
+}));
+})();
+</script>
+
 </body>
 </html>
